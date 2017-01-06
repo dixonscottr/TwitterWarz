@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^user_info/(.+)$', GetUserInfo()),
     url(r'^battle/$', views.battle, name='battle'),
     url(r'^battle/new$', views.new_battle, name='new_battle'),
+    url(r'^get_info/$', views.get_info)
 ]

@@ -47,6 +47,9 @@ class GetUserInfo(RestView):
       'last_tweet_id': user_info.status.id
       })
 
+def get_info(request):
+  embed()
+
 
 def index(request):
     return render(request, 'twitterwarz/index.html')
