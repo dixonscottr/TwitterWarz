@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="{% static 'css/twitterwarz.css' %}">
     <title>{{user.username}}'s latest tweets</title>
 </head>
-<body style="background: url('http://www.amazingwallpaperz.com/wp-content/uploads/Dragon-Fire-HD-Desktop-Background-Wallpapers.jpg')">
+<body style="background: url({{user.background_img_url}})">
   <div id="wrap">
   <div class="container">
     <div class="jumbotron">
-      <h1 class="text-center">Twitter User</h1>
+      <h1 class="text-center">Latest tweets</h1>
         {% for tweet in tweet_dict %}
         <div class="card">
           <div class="card-block">
