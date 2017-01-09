@@ -11,30 +11,29 @@
   <div id="wrap">
   <div class="container">
     <div class="jumbotron">
-      <h1 class="text-center">Battle Zone</h1>
+      <h1 class="text-center">Twitter Handle</h1>
         <div class="container text-center">
-          <button href="/battle/new" type="button" class="btn btn-danger btn-lg active">Fight</button>
-          <button type="button" class="btn btn-warning btn-lg active">Defend</button>
+          <form id='twitter-name' action='/get_info' method='put'>
+            <div class="input-group">
+              <span class="input-group-addon">@</span>
+              <input type="text" class="form-control" name='username' placeholder="Username" aria-describedby="basic-addon1">
+            </div>
+          <div class="form-check">
+            <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="user_info">User Info</label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="latest_tweets">30 latest tweets
+            </label>
+          </div>
+          <input type='submit' value='Get info' class="btn btn-warning btn-lg" />
+          </form>
         </div>
       </div>
     </div>
   <div class="container bg-info">
-    {% for user in users %}
-    <ul>
-      <li>
-      <a href="/user_info/{{user.twitter_handle}}" >{{ user.twitter_handle }}</a>
-      Or see <a href="/latest_tweets/{{user.twitter_handle}}">my tweets</a>!
-      </li>
-    </ul>
-    {% endfor %}
   </div>
-  <style>
-    .navbar-fixed-bottom {
-      background-color: darkred;
-      height: 8%;
-      line-height: 2.3em;
-    }
-  </style>
   <footer class="navbar-fixed-bottom">
     <div class="container">
       <div class="container text-center">
