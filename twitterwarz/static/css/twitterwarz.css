@@ -12,6 +12,12 @@ div#wrap {
   background-color: yellow;
 }
 
+.navbar-fixed-bottom {
+  background-color: darkred;
+  height: 8%;
+  line-height: 2.3em;
+}
+
 /*.jumbotron {
   height: 50%;
 }*/

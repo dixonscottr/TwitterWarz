@@ -48,7 +48,22 @@ class GetUserInfo(RestView):
       })
 
 def get_info(request):
-  embed()
+  username = request.GET.get('username', '').encode()
+  option = request.GET.get('optionsRadios', '').encode()
+  if option == 'user_info':
+    user_info = get_user_info(username)
+    return JsonResponse({
+      'username': username,
+      'location': user_info.location,
+      'description': user_info.description,
+      'profile_img_url': user_info.profile_image_url,
+      'background_img_url': user_info.profile_background_image_url,
+      'last_tweet_id': user_info.status.id
+      })
+  elif option == 'latest_tweets':
+    last_30_tweets = get_last_tweets(username)
+    tweet_dict = tweets_to_dict(last_30_tweets)
+    return JsonResponse(tweet_dict)
 
 
 def index(request):
