@@ -50,20 +50,21 @@ class GetUserInfo(RestView):
 def get_info(request):
   username = request.GET.get('username', '').encode()
   option = request.GET.get('optionsRadios', '').encode()
+  user_info = get_user_info(username)
+  user_data = {
+    'username': username,
+    'location': user_info.location,
+    'description': user_info.description,
+    'profile_img_url': user_info.profile_image_url,
+    'background_img_url': user_info.profile_background_image_url,
+    'last_tweet_id': user_info.status.id
+  }
   if option == 'user_info':
-    user_info = get_user_info(username)
-    return JsonResponse({
-      'username': username,
-      'location': user_info.location,
-      'description': user_info.description,
-      'profile_img_url': user_info.profile_image_url,
-      'background_img_url': user_info.profile_background_image_url,
-      'last_tweet_id': user_info.status.id
-      })
+    return render(request, 'twitterwarz/user.html', {'user': user_data})
   elif option == 'latest_tweets':
     last_30_tweets = get_last_tweets(username)
     tweet_dict = tweets_to_dict(last_30_tweets)
-    return JsonResponse(tweet_dict)
+    return render(request, 'twitterwarz/tweets.html', {'tweets': tweet_dict, 'user': user_data})
 
 
 def index(request):

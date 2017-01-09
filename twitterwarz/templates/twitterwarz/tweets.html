@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/twitterwarz.css' %}">
+    <title>{{user.username}}'s latest tweets</title>
+</head>
+<body style="background: url({{user.background_img_url}})">
+  <div id="wrap">
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="text-center">Latest tweets</h1>
+        {% for tweet in tweet_dict %}
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Card title</h4>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  <div class="container bg-info">
+  </div>
+  <footer class="navbar-fixed-bottom">
+    <div class="container">
+      <div class="container text-center">
+        <p class="text-muted">(C) 2016 TwitterWarz </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
