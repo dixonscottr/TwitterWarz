@@ -63,8 +63,8 @@ def get_info(request):
     return render(request, 'twitterwarz/user.html', {'user': user_data})
   elif option == 'latest_tweets':
     last_30_tweets = get_last_tweets(username)
-    tweet_dict = tweets_to_dict(last_30_tweets)
-    return render(request, 'twitterwarz/tweets.html', {'tweets': tweet_dict, 'user': user_data})
+    tweet_list = tweets_to_dict(last_30_tweets)
+    return render(request, 'twitterwarz/tweets.html', {'tweets': tweet_list, 'user': user_data})
 
 
 def index(request):

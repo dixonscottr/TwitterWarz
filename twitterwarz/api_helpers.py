@@ -22,16 +22,18 @@ def get_last_tweets(username):
 def get_user_info(username):
   return tweepy_api.get_user(username)
 
-def tweets_to_dict(tweet_array):
-  tweet_dict = {}
+def tweets_to_dict(tweet_list):
+  parsed_list = []
 
-  for tweet in tweet_array:
-    tweet_dict[tweet.id] = {}
-    tweet_dict[tweet.id]['content'] = tweet.text
-    tweet_dict[tweet.id]['timestamp'] = tweet.created_at
+  for tweet in tweet_list:
+    tweet_dict = {}
+    # tweet_dict[tweet.id] = {}
+    tweet_dict['content'] = tweet.text
+    tweet_dict['timestamp'] = tweet.created_at
     if 'media' in tweet.entities.keys():
-      tweet_dict[tweet.id]['pic_url'] = tweet.entities['media'][0]['media_url']
+      tweet_dict['pic_url'] = tweet.entities['media'][0]['media_url']
     else:
-      tweet_dict[tweet.id]['pic_url'] = None
+      tweet_dict['pic_url'] = None
+    parsed_list.append(tweet_dict)
 
-  return tweet_dict
+  return parsed_list
