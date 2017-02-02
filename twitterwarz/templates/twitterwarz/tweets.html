@@ -12,17 +12,22 @@
   <div id="wrap">
   <div class="container">
     <div class="jumbotron">
-      <h1 class="text-center">30 latest tweets from {{user.username}}</h1>
-       {% for id, tweet in tweets.items %}
-          <div class="card">
+      <h1 class="text-center">30 latest tweets from <a href="https://twitter.com/{{user.username}}">{{user.username}}</a></h1>
+      <div class='container'>
+      <div class='row'>
+       {% for tweet in tweets %}
+          <div class="card col-lg-4 col-md-6 col-sm-12" style="min-height: 400px">
             <div class="card-block">
-              <h4 class="card-title">{{tweet.timestamp}}</h4>
-              <h6 class="card-subtitle mb-2 text-muted">Content</h6>
+              <h4 class="card-title"><a href="https://twitter.com/{{user.username}}/status/{{id}}">{{tweet.timestamp}}</a></h4>
               <p class="card-text">{{tweet.content}}</p>
-              <a href="https://twitter.com/{{user.username}}/status/{{id}}" class="card-link">link to tweet</a>
+              {% if tweet.pic_url %}
+              <a href={{tweet.pic_url}} target="_blank"><img class="img-responsive img-thumbnail" style="max-height: 200px" src={{tweet.pic_url}} /></a>
+              {% endif %}
             </div>
           </div>
        {% endfor %}
+       </div>
+       </div>>
       </div>
     </div>
   <div class="container bg-info">
